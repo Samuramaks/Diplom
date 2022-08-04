@@ -9,12 +9,14 @@ class MainFunc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
+
   Widget BackGround(Widget name){
     return Container(
       decoration: BoxDecoration(image: DecorationImage(image: AssetImage("image/background.png"),
           fit: BoxFit.cover),
-          color: Colors.black38),
+          color: Colors.black),
       child: name,
     );
   }
 }
+

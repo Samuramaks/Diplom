@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
-import 'package:auto_route/annotations.dart';
 
 
 MainFunc main_func = new MainFunc();
 
 class BackgroundNews extends StatelessWidget {
   const BackgroundNews({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return main_func.BackGround(News());
@@ -16,10 +14,6 @@ class BackgroundNews extends StatelessWidget {
 
 class News extends StatefulWidget {
   const News({Key? key}) : super(key: key);
-
-
-
-
   @override
   State<News> createState() => _News();
 }
@@ -38,13 +32,9 @@ class _News extends State<News> {
                 Padding(padding: EdgeInsets.only(top: 45)),
                 Text('News',style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.indigo,
                 ),),
                 Padding(padding: EdgeInsets.only(right: 15)),
-
-                ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/');
-                }, child: Text('Go'))
               ],
             )
           ],

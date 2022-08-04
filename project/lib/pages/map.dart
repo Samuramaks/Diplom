@@ -34,13 +34,9 @@ class _Map extends State<Map> {
                 Padding(padding: EdgeInsets.only(top: 45)),
                 Text('Map',style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.indigo,
                 ),),
                 Padding(padding: EdgeInsets.only(right: 15)),
-
-                ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/');
-                }, child: Text('Go'))
               ],
             )
           ],

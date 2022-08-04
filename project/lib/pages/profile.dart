@@ -4,8 +4,10 @@ import 'package:project/pages/MainFunc.dart';
 
 MainFunc main_func = new MainFunc();
 
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+
+
+class BackGroundProfile extends StatelessWidget {
+  const BackGroundProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _User extends State<User> {
                   Text('Samurai',
                     style: TextStyle(
                     fontSize: 25,
-                    color: Colors.white,
+                    color: Colors.indigo,
                   ),
                   ),
                   CircleAvatar(
@@ -45,21 +47,14 @@ class _User extends State<User> {
                   Padding(padding: EdgeInsets.only(top: 25)),
                   Row(
                     children: [
-                      Icon(Icons.contact_mail,size: 25,color: Colors.white,),
+                      Icon(Icons.contact_mail,size: 25,color: Colors.indigo,),
                       Padding(padding: EdgeInsets.only(right: 15)),
-                      Text('Samurai@mail.ru',style: TextStyle(color: Colors.white,fontSize: 25),),
+                      Text('Samurai@mail.ru',style: TextStyle(color: Colors.indigo,fontSize: 25),),
                     ],
                   ),
                   Padding(padding: EdgeInsets.only(right: 15)),
                   Padding(padding: EdgeInsets.only(right: 15)),
-                  /*IconButton(onPressed: (){
-                    Navigator.pushNamed(context,'/map');
-                  }, icon: Icon(Icons.home)),*/
                   Padding(padding: EdgeInsets.only(top: 15)),
-                  ElevatedButton(onPressed: (){
-                    Navigator.pushNamed(context, '/map');
-                  },
-                      child: Text('Go to Map'))
                 ],
               )
             ],

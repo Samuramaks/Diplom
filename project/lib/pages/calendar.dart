@@ -35,13 +35,10 @@ class _Calendar extends State<Calendar> {
                 Padding(padding: EdgeInsets.only(top: 45)),
                 Text('Calendar',style: TextStyle(
                   fontSize: 25,
-                  color: Colors.white,
+                  color: Colors.indigo,
                 ),),
                 Padding(padding: EdgeInsets.only(right: 15)),
 
-                ElevatedButton(onPressed: (){
-                  Navigator.pushNamed(context, '/');
-                }, child: Text('Go'))
               ],
             )
           ],
