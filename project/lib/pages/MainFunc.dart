@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:project/Theme/colors.dart';
 
 
 class MainFunc extends StatelessWidget {
@@ -9,11 +9,13 @@ class MainFunc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
+
   Widget BackGround(Widget name){
     return Container(
       decoration: BoxDecoration(image: DecorationImage(image: AssetImage("image/background.png"),
-          fit: BoxFit.cover),
-          color: Colors.black38),
+          fit: BoxFit.contain,
+          opacity: .17),
+          color: Colors.black),
       child: name,
     );
   }

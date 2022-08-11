@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
 
-
 MainFunc main_func = new MainFunc();
 
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+
+
+class BackGroundProfile extends StatelessWidget {
+  const BackGroundProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,45 +27,97 @@ class _User extends State<User> {
   Widget build(BuildContext context) {
     return Container(
       child: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 45)),
-                  Text('Samurai',
-                    style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                  ),
-                  ),
-                  CircleAvatar(
-                    backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/samurai-head-warrior-illustration-design_113398-382.jpg?w=2000'),
-                    radius: 50,
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 25)),
-                  Row(
-                    children: [
-                      Icon(Icons.contact_mail,size: 25,color: Colors.white,),
-                      Padding(padding: EdgeInsets.only(right: 15)),
-                      Text('Samurai@mail.ru',style: TextStyle(color: Colors.white,fontSize: 25),),
-                    ],
-                  ),
-                  Padding(padding: EdgeInsets.only(right: 15)),
-                  Padding(padding: EdgeInsets.only(right: 15)),
-                  /*IconButton(onPressed: (){
-                    Navigator.pushNamed(context,'/map');
-                  }, icon: Icon(Icons.home)),*/
-                  Padding(padding: EdgeInsets.only(top: 15)),
-                  ElevatedButton(onPressed: (){
-                    Navigator.pushNamed(context, '/map');
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top: 45)),
+                CircleAvatar(
+                  backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/samurai-head-warrior-illustration-design_113398-382.jpg?w=2000'),
+                  radius: 70,
+                ),
+
+                Padding(padding: EdgeInsets.only(top: 15)),
+                Text('Иванов Иван Иванович',style: TextStyle(color: Colors.white,fontSize: 20),),
+                Padding(padding: EdgeInsets.only(top: 5)),
+                Text('КC-30',style: TextStyle(color: Colors.white,fontSize: 20),),
+                Padding(padding: EdgeInsets.only(top: 10)),
+                Row(
+                  children: [
+
+                    Icon(Icons.contact_mail,size: 15,color: Colors.white,),
+                    Padding(padding: EdgeInsets.only(right: 15)),
+                    Text('Ivanov@mail.ru',style: TextStyle(color: Colors.white,fontSize: 15),),
+
+                  ],
+                ),
+
+
+                Padding(padding: EdgeInsets.only(right: 15)),
+                Padding(padding: EdgeInsets.only(right: 15)),
+                Padding(padding: EdgeInsets.only(top: 15)),
+
+                ElevatedButton(onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                },
+                    child: Text('Преподаватели'),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: BorderSide(
+                            color: Colors.indigo,
+                            width: 2.0,
+                          ),
+                        ),
+                        primary: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 27, vertical: 10),
+                        textStyle: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal))
+                    ),
+                Padding(padding: EdgeInsets.only(left: 15)),
+                Padding(padding: EdgeInsets.only(top: 15)),
+                ElevatedButton(onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                },
+                    child: Text('Журнал'),
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: BorderSide(
+                            color: Colors.indigo,
+                            width: 2.0,
+                          ),
+                        ),
+                        primary: Colors.black,
+                        padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+                        textStyle: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal))
+                ),
+                Padding(padding: EdgeInsets.only(top: 140)),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
                   },
-                      child: Text('Go to Map'))
-                ],
-              )
-            ],
-          ),
+                  child:Text("Выйти"),
+                  style: TextButton.styleFrom(
+                      primary: Colors.red,
+                      textStyle: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                  ),
+                  ),
+              ],
+
+            )
+          ],
         ),
-      );
+      ),
+    );
   }
 }

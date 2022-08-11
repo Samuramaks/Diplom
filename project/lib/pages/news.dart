@@ -4,23 +4,21 @@ import 'package:project/pages/MainFunc.dart';
 
 MainFunc main_func = new MainFunc();
 
-class BackgroundMap extends StatelessWidget {
-  const BackgroundMap({Key? key}) : super(key: key);
-
+class BackgroundNews extends StatelessWidget {
+  const BackgroundNews({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return main_func.BackGround(Map());
+    return main_func.BackGround(News());
   }
 }
 
-class Map extends StatefulWidget {
-  const Map({Key? key}) : super(key: key);
-
+class News extends StatefulWidget {
+  const News({Key? key}) : super(key: key);
   @override
-  State<Map> createState() => _Map();
+  State<News> createState() => _News();
 }
 
-class _Map extends State<Map> {
+class _News extends State<News> {
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +30,12 @@ class _Map extends State<Map> {
             Column(
               children: [
                 Padding(padding: EdgeInsets.only(top: 45)),
-                Text('Map',style: TextStyle(
+                Text('News',style: TextStyle(
                   fontSize: 25,
                   color: Colors.indigo,
                 ),),
                 Padding(padding: EdgeInsets.only(right: 15)),
+                Text('на сегодняшний день никто нихуя не сделал',style: TextStyle(color: Colors.white,fontSize: 20),),
               ],
             )
           ],
