@@ -4,6 +4,7 @@ import 'package:project/pages/MainFunc.dart';
 
 MainFunc main_func = new MainFunc();
 
+
 class BackgroundNews extends StatelessWidget {
   const BackgroundNews({Key? key}) : super(key: key);
   @override
