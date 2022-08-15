@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
+<<<<<<< HEAD
+=======
+import 'package:project/Theme/colors.dart';
+>>>>>>> master
 
 MainFunc main_func = new MainFunc();
 
@@ -71,7 +75,11 @@ class _User extends State<User> {
                             width: 2.0,
                           ),
                         ),
+<<<<<<< HEAD
                         primary: Colors.black,
+=======
+                        primary: AppColors.main_grey,
+>>>>>>> master
                         padding: EdgeInsets.symmetric(horizontal: 27, vertical: 10),
                         textStyle: TextStyle(
                             fontSize: 15,
@@ -92,7 +100,11 @@ class _User extends State<User> {
                             width: 2.0,
                           ),
                         ),
+<<<<<<< HEAD
                         primary: Colors.black,
+=======
+                        primary: AppColors.main_grey,
+>>>>>>> master
                         padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
                         textStyle: TextStyle(
                             fontSize: 15,
