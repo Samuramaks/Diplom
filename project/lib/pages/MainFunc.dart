@@ -15,11 +15,7 @@ class MainFunc extends StatelessWidget {
       decoration: BoxDecoration(image: DecorationImage(image: AssetImage("image/background.png"),
           fit: BoxFit.contain,
           opacity: .17),
-<<<<<<< HEAD
-          color: Colors.black),
-=======
           color: AppColors.main_grey),
->>>>>>> master
       child: name,
     );
   }

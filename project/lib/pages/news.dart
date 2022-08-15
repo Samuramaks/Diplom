@@ -35,11 +35,7 @@ class _News extends State<News> {
                   color: Colors.indigo,
                 ),),
                 Padding(padding: EdgeInsets.only(right: 15)),
-<<<<<<< HEAD
-                Text('на сегодняшний день никто нихуя не сделал',style: TextStyle(color: Colors.white,fontSize: 20),),
-=======
                 Text('на сегодняшний день никто \n нихуя не сделал',style: TextStyle(color: Colors.white,fontSize: 20),),
->>>>>>> master
               ],
             )
           ],
