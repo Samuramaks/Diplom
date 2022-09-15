@@ -16,8 +16,8 @@ class _MainScreen extends State<MainScreen> {
   int _selected_tab = 3;
   static const List<Widget> _widget_options = <Widget>[
     BackgroundNews(),
-    BackgroundCalendar(),
     BackgroundMap(),
+    BackgroundCalendar(),
     BackGroundProfile(),
   ];
 
