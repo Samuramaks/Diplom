@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project/Theme/colors.dart';
+import 'package:project/pages/authorization.dart';
 import 'package:project/pages/mainscreen.dart';
+import 'package:project/pages/news.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
         // appBarTheme: AppBarTheme(
         //   backgroundColor: AppColors.main_gray,
         // ),
+
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: AppColors.main_grey, //тут почему то не хочет отображать цвет панели
           unselectedItemColor: Colors.white70,//тут невыбранные элементы отображаются цветом
