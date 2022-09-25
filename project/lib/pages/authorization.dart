@@ -1,5 +1,6 @@
-//import 'dart:js';
-import 'package:project/pages/mainscreen.dart';
+import 'package:requests/requests.dart';
+import 'dart:convert';
+//import 'package:project/pages/mainscreen.dart';
 import 'package:project/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
@@ -16,30 +17,50 @@ class BackGroundAuthorization extends StatelessWidget {
     return main_func.BackGround(Form());
   }
 }
-//
-// class Auth extends StatefulWidget {
-//   const Auth({Key? key}) : super(key: key);
-//   @override
-//   State<Auth> createState() => _Auth();
-// }
 
-// class _Auth extends State<Auth> {
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final textStyle = const TextStyle(
-//       fontSize: 16,
-//       color: Colors.white,
-//     );
-//     return Scaffold(
-//       body: Form(),
-//     );
-//   }
-// }
+class EiosAPI{
+  final urlAccounts= "https://api.muctr.ru/accounts";
+
+  late Map<String, dynamic> identities;
+  Map<String, String> auth_header = {};
+
+  Future<void> login(String username, String password) async {
+    var urlApi = "$urlAccounts/authenticate/login/"; // ?
+
+    Map<String, String> creds = {
+      "username": username,
+      "password": password,
+    };
+
+    print("LOGIN: PRE REQUEST");
+    var r = await Requests.post(urlApi, body: creds);
+    print("LOGIN: POST REQUEST");
+
+    identities = jsonDecode(r.body) as Map<String, dynamic>;
+
+    auth_header = {
+      "Authorization": "Token ${identities['token']}" 
+    };
+  }
+
+  Future<Map<String, dynamic>> getProfileData() async {
+    var urlProfile = "$urlAccounts/user/${identities["uid"]}/profile/"; // ?
+
+    print("PROFILE: PRE REQUEST");
+    var r = await Requests.get(urlProfile, headers: auth_header);
+    print("PROFILE: POST REQUEST");
+
+    return jsonDecode(r.body) as Map<String, dynamic>;
+  }
+}
 
 class Form extends StatefulWidget {
-  const Form({Key? key}) : super(key: key);
-
+  dynamic profile_data;
+  Form({Key? key}) : super(key: key);
+  Form.fromProfileData(dynamic profile_data) {
+    this.profile_data = profile_data;
+  }
+  
   @override
   State<Form> createState() => _FormState();
 }
@@ -48,18 +69,26 @@ class _FormState extends State<Form> {
   final loginTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   String? errorText = null;
-  void auth() {
-    final login = loginTextController.text;
+  void auth() async{
+    final username = loginTextController.text;
     final password = passwordTextController.text;
-    if (login == 'admin' && password == 'admin'){
-      errorText = null;
+
+    EiosAPI epi = EiosAPI();
+    print("username=$username\npassword=$password");
+    await epi.login(username, password);
+    dynamic profile_data = await epi.getProfileData();
+    
+    // if (username == 'admin' && password == 'admin'){
+    //   errorText = null;
       final navigator = Navigator.of(context);
       navigator.push(
         MaterialPageRoute<void>(builder: (context) => BackGroundProfile())
       );
-    }else{
-      errorText = 'Неверный логин или пароль';
-    }
+    // }else{
+    //   errorText = 'Неверный логин или пароль';
+    // }
+    
+    //return profile_data;
     setState(() {});
   }
   @override

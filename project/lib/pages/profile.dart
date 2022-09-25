@@ -3,7 +3,9 @@ import 'package:project/pages/MainFunc.dart';
 import 'package:project/Theme/colors.dart';
 
 MainFunc main_func = new MainFunc();
+FormState _formState = new FormState();
 
+//final dynamic data = _formState.au
 
 
 
