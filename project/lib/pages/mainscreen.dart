@@ -3,6 +3,7 @@ import 'package:project/pages/profile.dart';
 import 'package:project/pages/map.dart';
 import 'package:project/pages/news.dart';
 import 'package:project/pages/calendar.dart';
+import 'package:project/pages/authorization.dart';
 import 'package:project/Theme/colors.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,16 +19,16 @@ class _MainScreen extends State<MainScreen> {
     BackgroundNews(),
     BackgroundMap(),
     BackgroundCalendar(),
-    BackGroundProfile(),
+    BackGroundAuthorization(),
   ];
 
-
-  void OnSelectedTab(int index){
-    if(_selected_tab == index) return;
+  void OnSelectedTab(int index) {
+    if (_selected_tab == index) return;
     setState(() {
       _selected_tab = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

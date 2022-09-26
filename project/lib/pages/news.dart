@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
-import 'package:webfeed/webfeed.dart';
-import 'package:project/common/fetch_http_news.dart';
-import 'dart:io' as io;
 
 
 MainFunc main_func = new MainFunc();
@@ -23,49 +20,27 @@ class News extends StatefulWidget {
 }
 
 class _News extends State<News> {
-  List newsList = [];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: SafeArea(
-        child: FutureBuilder(
-          future: _getHttpNews(),
-          builder: (context, AsyncSnapshot snapshot){
-            if(!snapshot.hasData){
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }else{
-              return Container(
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                    itemCount: newsList.length,
-                    itemBuilder: (BuildContext context, int index){
-                    return Card(
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Text('${newsList[index].title}')
-                          ],
-                        ),
-                      ),
-                    );
-                    }),
-              );
-            }
-          },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Padding(padding: EdgeInsets.only(top: 45)),
+                Text('News',style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.indigo,
+                ),),
+                Padding(padding: EdgeInsets.only(right: 15)),
+              ],
+            )
+          ],
         ),
       ),
     );
-  }
-  _getHttpNews() async{
-    var response = await fetch();
-    var chanel = RssFeed.parse(response.body);
-    chanel.items.forEach((element) {
-      newsList.add(element);
-    });
-
-    return newsList;
-  
   }
 }

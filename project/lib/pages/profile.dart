@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
 import 'package:project/Theme/colors.dart';
+import 'package:project/pages/globalvariables.dart' as global;
 
 MainFunc main_func = new MainFunc();
+FormState _formState = new FormState();
 
-
-
+//final dynamic data = _formState.au
 
 class BackGroundProfile extends StatelessWidget {
-  const BackGroundProfile({Key? key}) : super(key: key);
+  const BackGroundProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return main_func.BackGround(User());
+    return main_func.BackGround(Profile());
   }
 }
 
-class User extends StatefulWidget {
-  const User({Key? key}) : super(key: key);
+// class User extends StatefulWidget {
+//   const User({Key? key}) : super(key: key);
 
-  @override
-  State<User> createState() => _User();
-}
+//   @override
+//   State<User> createState() => _User();
+// }
 
-class _User extends State<User> {
-
+class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final String avatar = global.profile_data['avatar'] as String;
+    final dynamic group_info =
+        global.education_data['educations'][0]['education_group'];
+    final String email = global.profile_data['emails'][0]['email'] as String;
     return Container(
       child: SafeArea(
         child: Row(
@@ -36,34 +40,43 @@ class _User extends State<User> {
               children: [
                 Padding(padding: EdgeInsets.only(top: 45)),
                 CircleAvatar(
-                  backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/samurai-head-warrior-illustration-design_113398-382.jpg?w=2000'),
+                  backgroundImage: NetworkImage(avatar),
                   radius: 70,
                 ),
-
                 Padding(padding: EdgeInsets.only(top: 15)),
-                Text('Иванов Иван Иванович',style: TextStyle(color: Colors.white,fontSize: 20),),
+                Text(
+                  '${global.profile_data['lastname']} ${global.profile_data['firstname']} ${global.profile_data['midname']}',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
                 Padding(padding: EdgeInsets.only(top: 5)),
-                Text('КC-30',style: TextStyle(color: Colors.white,fontSize: 20),),
+                Text(
+                  '${group_info['litter']} - ${group_info['course']}${group_info['number']}',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
                 Padding(padding: EdgeInsets.only(top: 10)),
                 Row(
                   children: [
-
-                    Icon(Icons.contact_mail,size: 15,color: Colors.white,),
+                    Icon(
+                      Icons.contact_mail,
+                      size: 15,
+                      color: Colors.white,
+                    ),
                     Padding(padding: EdgeInsets.only(right: 15)),
-                    Text('Ivanov@mail.ru',style: TextStyle(color: Colors.white,fontSize: 15),),
-
+                    Text(
+                      '$email',
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
                   ],
                 ),
-
-
                 Padding(padding: EdgeInsets.only(right: 15)),
                 Padding(padding: EdgeInsets.only(right: 15)),
                 Padding(padding: EdgeInsets.only(top: 15)),
-
-                ElevatedButton(onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-                },
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (route) => false);
+                    },
                     child: Text('Преподаватели'),
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -74,17 +87,18 @@ class _User extends State<User> {
                           ),
                         ),
                         primary: AppColors.main_grey,
-                        padding: EdgeInsets.symmetric(horizontal: 27, vertical: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 27, vertical: 10),
                         textStyle: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal))
-                    ),
+                            fontSize: 15, fontWeight: FontWeight.normal))),
                 Padding(padding: EdgeInsets.only(left: 15)),
                 Padding(padding: EdgeInsets.only(top: 15)),
-                ElevatedButton(onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-                },
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (route) => false);
+                    },
                     child: Text('Журнал'),
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -95,27 +109,25 @@ class _User extends State<User> {
                           ),
                         ),
                         primary: AppColors.main_grey,
-                        padding: EdgeInsets.symmetric(horizontal: 55, vertical: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 55, vertical: 10),
                         textStyle: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal))
-                ),
+                            fontSize: 15, fontWeight: FontWeight.normal))),
                 Padding(padding: EdgeInsets.only(top: 140)),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/', (route) => false);
                   },
-                  child:Text("Выйти"),
+                  child: Text("Выйти"),
                   style: TextButton.styleFrom(
-                      primary: Colors.red,
-                      textStyle: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                    primary: Colors.red,
+                    textStyle:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
-                  ),
+                ),
               ],
-
             )
           ],
         ),
