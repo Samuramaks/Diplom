@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
 import 'package:project/Theme/colors.dart';
+import 'package:project/pages/authorization.dart';
 import 'package:project/pages/globalvariables.dart' as global;
 
 MainFunc main_func = new MainFunc();
@@ -13,7 +14,12 @@ class BackGroundProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return main_func.BackGround(Profile());
+    if (global.profile_data == null) {
+      return BackGroundAuthorization();
+    }
+    else {
+      return main_func.BackGround(Profile());
+    }
   }
 }
 
@@ -116,6 +122,7 @@ class Profile extends StatelessWidget {
                 Padding(padding: EdgeInsets.only(top: 140)),
                 TextButton(
                   onPressed: () {
+                    main_func.cleanAuthData();
                     Navigator.pop(context);
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/', (route) => false);
