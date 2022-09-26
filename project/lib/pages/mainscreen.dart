@@ -19,7 +19,7 @@ class _MainScreen extends State<MainScreen> {
     BackgroundNews(),
     BackgroundMap(),
     BackgroundCalendar(),
-    BackGroundAuthorization(),
+    BackGroundProfile(),
   ];
 
   void OnSelectedTab(int index) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/Theme/colors.dart';
+import 'globalvariables.dart' as global;
 
 
 class MainFunc extends StatelessWidget {
@@ -19,5 +20,10 @@ class MainFunc extends StatelessWidget {
           color: AppColors.main_grey),
       child: name,
     );
+  }
+
+  void cleanAuthData() {
+    global.profile_data = null;
+    global.education_data = null;
   }
 }
