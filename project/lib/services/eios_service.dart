@@ -4,8 +4,8 @@ class EiosAPI {
   final urlAccounts = "https://api.muctr.ru/accounts";
   final urlEducation = "https://api.muctr.ru/education/students/student/";
 
-  late Map<String, dynamic> identities;
-  Map<String, String> auth_header = {};
+  static late Map<String, dynamic> identities;
+  static Map<String, String> auth_header = {};
 
   Future<void> login(String username, String password) async {
     var urlApi = "$urlAccounts/authenticate/login/"; // ?

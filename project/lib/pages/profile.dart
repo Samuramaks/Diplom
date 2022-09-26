@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
 import 'package:project/Theme/colors.dart';
 import 'package:project/pages/authorization.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:project/services/eios_service.dart';
 import 'package:project/pages/globalvariables.dart' as global;
 
 MainFunc main_func = new MainFunc();
@@ -34,9 +36,10 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String avatar = global.profile_data['avatar'] as String;
-    final dynamic group_info =
-        global.education_data['educations'][0]['education_group'];
+    final dynamic group_info = global.education_data['educations'][0]['education_group'];
     final String email = global.profile_data['emails'][0]['email'] as String;
+
+    print(EiosAPI.auth_header);
     return Container(
       child: SafeArea(
         child: Row(
@@ -46,7 +49,10 @@ class Profile extends StatelessWidget {
               children: [
                 Padding(padding: EdgeInsets.only(top: 45)),
                 CircleAvatar(
-                  backgroundImage: NetworkImage(avatar),
+                  backgroundImage: CachedNetworkImageProvider(
+                    avatar,
+                    headers: EiosAPI.auth_header,
+                  ),
                   radius: 70,
                 ),
                 Padding(padding: EdgeInsets.only(top: 15)),
