@@ -60,37 +60,48 @@ class Form extends StatefulWidget {
   Form.fromProfileData(dynamic profile_data) {
     this.profile_data = profile_data;
   }
-  
+  dynamic getProfileData(){
+    return 0;
+  }
   @override
   State<Form> createState() => _FormState();
 }
 
 class _FormState extends State<Form> {
+  dynamic profile_data;
   final loginTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  // ignore: avoid_init_to_null
   String? errorText = null;
-  void auth() async{
+  
+  dynamic getProfileData(){
+    return auth();
+  }
+
+  dynamic auth() async{
     final username = loginTextController.text;
     final password = passwordTextController.text;
 
+    // ignore: omit_local_variable_types
     EiosAPI epi = EiosAPI();
-    print("username=$username\npassword=$password");
+    print('username=$username\npassword=$password');
     await epi.login(username, password);
-    dynamic profile_data = await epi.getProfileData();
-    
+    profile_data = await epi.getProfileData();
     // if (username == 'admin' && password == 'admin'){
     //   errorText = null;
-      final navigator = Navigator.of(context);
-      navigator.push(
-        MaterialPageRoute<void>(builder: (context) => BackGroundProfile())
+    final navigator = Navigator.of(context);
+    //await navigator.pushReplacementNamed('profile.dart', arguments: profile_data);
+       await navigator.push(
+         MaterialPageRoute<void>(builder: (context) => BackGroundProfile(profileData: profile_data))
       );
     // }else{
     //   errorText = 'Неверный логин или пароль';
     // }
     
-    //return profile_data;
+    return profile_data;
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     final textStyle = const TextStyle(

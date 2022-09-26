@@ -2,33 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:project/pages/MainFunc.dart';
 import 'package:project/Theme/colors.dart';
 
-MainFunc main_func = new MainFunc();
-FormState _formState = new FormState();
+MainFunc main_func = MainFunc();
+FormState _formState = FormState();
 
-//final dynamic data = _formState.au
+
+
 
 
 
 class BackGroundProfile extends StatelessWidget {
-  const BackGroundProfile({Key? key}) : super(key: key);
+  dynamic profileData;
+  BackGroundProfile({super.key, required this.profileData});
 
   @override
   Widget build(BuildContext context) {
-    return main_func.BackGround(User());
+    return main_func.BackGround(User(profile_data: profileData));
   }
 }
 
 class User extends StatefulWidget {
-  const User({Key? key}) : super(key: key);
+  dynamic profile_data;
+  User({super.key, required this.profile_data});
 
   @override
   State<User> createState() => _User();
 }
 
 class _User extends State<User> {
-
+  //dynamic profile_data = ModalRoute.of(context)!.settings.arguments;
+  String ghj = 'j';
   @override
   Widget build(BuildContext context) {
+    print(this.profile_data);
     return Container(
       child: SafeArea(
         child: Row(
